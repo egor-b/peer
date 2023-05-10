@@ -11,7 +11,7 @@ import SwiftUI
 struct peerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomeController()
         }
     }
 }
