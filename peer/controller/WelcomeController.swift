@@ -46,7 +46,8 @@ struct WelcomeController: View {
                         .padding(.bottom, 30)
                     
                     NavigationLink {
-                        OnboardingController(progressValue: 0.25).navigationBarTitle("")
+                        OnboardingController()
+                            .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {
                         Text("Team Member")
@@ -59,7 +60,7 @@ struct WelcomeController: View {
                     .padding()
                     
                     NavigationLink {
-                        OnboardingController(progressValue: 0.25)
+                        OnboardingController()
                     } label: {
                         Text("Team Admin")
                             .foregroundColor(.white)

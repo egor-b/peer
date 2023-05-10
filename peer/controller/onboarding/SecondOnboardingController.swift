@@ -1,24 +1,28 @@
 //
-//  FirstController.swift
+//  SecondOnboardingController.swift
 //  peer
 //
-//  Created by Bryzgalov, Egor (A.) on 5/9/23.
+//  Created by Bryzgalov, Egor (A.) on 5/10/23.
 //
 
 import SwiftUI
 
-struct FirstOnboardingController: View {
+struct SecondOnboardingController: View {
     
-    @ObservedObject var onboardHandler: OnboardHandler
+    @StateObject var onboardHandler: OnboardHandler
     
     var body: some View {
         
-            ZStack {
-                Color.background.ignoresSafeArea()
+        ZStack {
+            Color.background.ignoresSafeArea()
             VStack {
                 HStack {
                     Button {
-                        print("BACK")
+                        withAnimation {
+                            onboardHandler.onboarding.first.toggle()
+                            onboardHandler.onboarding.second.toggle()
+                            onboardHandler.handleOnboardScreen(isNext: false)
+                        }
                     } label: {
                         Image(systemName: "arrow.backward.square")
                             .foregroundColor(.white)
@@ -27,7 +31,7 @@ struct FirstOnboardingController: View {
                         .padding(.leading, 10)
                     Spacer()
                     Button {
-                        print("Question")
+                        print("YOU ARE MEMBER")
                     } label: {
                         Image(systemName: "questionmark.app")
                             .foregroundColor(.white)
@@ -37,7 +41,7 @@ struct FirstOnboardingController: View {
                     .padding(.trailing, 10)
                 }
                 Spacer()
-                Text("What kind of personalities do you have on your team?")
+                Text("What skill?")
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: UIScreen.screenWidth)
@@ -47,12 +51,7 @@ struct FirstOnboardingController: View {
                 
                 Spacer()
                 Button {
-                    withAnimation {
-                        onboardHandler.onboarding.first.toggle()
-                        onboardHandler.onboarding.second.toggle()
-                        onboardHandler.handleOnboardScreen(isNext: true)
-                    }
-                    
+                    print("YOU ARE MEMBER")
                 } label: {
                     Text("Introvert")
                         .foregroundColor(.background)
@@ -63,6 +62,18 @@ struct FirstOnboardingController: View {
                     .cornerRadius(25)
                     .padding()
                 Button {
+                    print("YOU ARE MEMBER")
+                } label: {
+                    Text("Introvert")
+                        .foregroundColor(.background)
+                        .bold()
+                        .padding()
+                }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+                    .background(.white)
+                    .cornerRadius(25)
+                    .padding()
+                Button {
+                    print("YOU ARE MEMBER")
                 } label: {
                     Text("Ambient")
                         .foregroundColor(.background)
@@ -89,8 +100,8 @@ struct FirstOnboardingController: View {
     }
 }
 
-struct FirstController_Previews: PreviewProvider {
+struct SecondOnboardingController_Previews: PreviewProvider {
     static var previews: some View {
-        FirstOnboardingController(onboardHandler: OnboardHandler())
+        SecondOnboardingController(onboardHandler: OnboardHandler())
     }
 }

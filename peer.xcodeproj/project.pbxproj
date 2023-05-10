@@ -19,6 +19,9 @@
 		4E1DE3212A0A9B6E00CFC5E9 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE3202A0A9B6E00CFC5E9 /* OnboardingController.swift */; };
 		4E1DE3242A0A9C6400CFC5E9 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE3232A0A9C6400CFC5E9 /* ProgressBarView.swift */; };
 		4E1DE3272A0AC2EF00CFC5E9 /* FirstOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE3262A0AC2EF00CFC5E9 /* FirstOnboardingController.swift */; };
+		4E1DE3292A0BDBC600CFC5E9 /* SecondOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE3282A0BDBC600CFC5E9 /* SecondOnboardingController.swift */; };
+		4E1DE32C2A0BDEB300CFC5E9 /* OnboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE32B2A0BDEB300CFC5E9 /* OnboardHandler.swift */; };
+		4E1DE32F2A0BDF6500CFC5E9 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		4E1DE3202A0A9B6E00CFC5E9 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		4E1DE3232A0A9C6400CFC5E9 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		4E1DE3262A0AC2EF00CFC5E9 /* FirstOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingController.swift; sourceTree = "<group>"; };
+		4E1DE3282A0BDBC600CFC5E9 /* SecondOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingController.swift; sourceTree = "<group>"; };
+		4E1DE32B2A0BDEB300CFC5E9 /* OnboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardHandler.swift; sourceTree = "<group>"; };
+		4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 		4E1DE2EE2A0A7FDC00CFC5E9 /* peer */ = {
 			isa = PBXGroup;
 			children = (
+				4E1DE32D2A0BDEC900CFC5E9 /* model */,
+				4E1DE32A2A0BDE9200CFC5E9 /* service */,
 				4E1DE3222A0A9C5200CFC5E9 /* View */,
 				4E1DE31B2A0A8BAD00CFC5E9 /* extensions */,
 				4E1DE31A2A0A804D00CFC5E9 /* controller */,
@@ -172,8 +180,25 @@
 			isa = PBXGroup;
 			children = (
 				4E1DE3262A0AC2EF00CFC5E9 /* FirstOnboardingController.swift */,
+				4E1DE3282A0BDBC600CFC5E9 /* SecondOnboardingController.swift */,
 			);
 			path = onboarding;
+			sourceTree = "<group>";
+		};
+		4E1DE32A2A0BDE9200CFC5E9 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				4E1DE32B2A0BDEB300CFC5E9 /* OnboardHandler.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		4E1DE32D2A0BDEC900CFC5E9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,10 +333,13 @@
 			files = (
 				4E1DE2F22A0A7FDC00CFC5E9 /* WelcomeController.swift in Sources */,
 				4E1DE3242A0A9C6400CFC5E9 /* ProgressBarView.swift in Sources */,
+				4E1DE32F2A0BDF6500CFC5E9 /* Onboarding.swift in Sources */,
 				4E1DE2F02A0A7FDC00CFC5E9 /* peerApp.swift in Sources */,
 				4E1DE31D2A0A8BEE00CFC5E9 /* Color.swift in Sources */,
+				4E1DE3292A0BDBC600CFC5E9 /* SecondOnboardingController.swift in Sources */,
 				4E1DE3272A0AC2EF00CFC5E9 /* FirstOnboardingController.swift in Sources */,
 				4E1DE31F2A0A96DE00CFC5E9 /* Screen.swift in Sources */,
+				4E1DE32C2A0BDEB300CFC5E9 /* OnboardHandler.swift in Sources */,
 				4E1DE3212A0A9B6E00CFC5E9 /* OnboardingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

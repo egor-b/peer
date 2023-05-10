@@ -1,5 +1,5 @@
 //
-//  DescribeOnboardingController.swift
+//  OnboardingController.swift
 //  peer
 //
 //  Created by Bryzgalov, Egor (A.) on 5/9/23.
@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct OnboardingController: View {
-    @State var progressValue: Float = 0.20
+    
+    @ObservedObject var onboardHandler = OnboardHandler()
+
 //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
             VStack {
-                ProgressBarView(value: $progressValue).frame(height: 10)
+                ProgressBarView(value: $onboardHandler.onboarding.progress)
+                    .frame(height: 5)
                     .padding()
+                if onboardHandler.onboarding.first {
+                    FirstOnboardingController(onboardHandler: onboardHandler)
+                        .transition(.opacity)
+                } else if onboardHandler.onboarding.second {
+                        SecondOnboardingController(onboardHandler: onboardHandler)
+                        .transition(.opacity )//.move(edge: .trailing))
+                    
+                }
                 
-                FirstOnboardingController()
             }
         }
     }
