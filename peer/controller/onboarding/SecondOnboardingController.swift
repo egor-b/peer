@@ -10,7 +10,8 @@ import SwiftUI
 struct SecondOnboardingController: View {
     
     @StateObject var onboardHandler: OnboardHandler
-    
+    @State private var isShowingPopover = false
+
     var body: some View {
         
         ZStack {
@@ -31,11 +32,15 @@ struct SecondOnboardingController: View {
                         .padding(.leading, 10)
                     Spacer()
                     Button {
-                        print("YOU ARE MEMBER")
+                        isShowingPopover.toggle()
                     } label: {
                         Image(systemName: "questionmark.app")
                             .foregroundColor(.white)
                             .font(.system(size: 40))
+                    }.popover(isPresented: $isShowingPopover, attachmentAnchor: .point(.center)) {
+                        PopoverView()
+                            .frame(width: UIScreen.screenWidth * 0.8)
+                            .presentationCompactAdaptation(.popover)
                     }
                     .padding()
                     .padding(.trailing, 10)
@@ -51,7 +56,10 @@ struct SecondOnboardingController: View {
                 
                 Spacer()
                 Button {
-                    print("YOU ARE MEMBER")
+                    onboardHandler.onboarding.second.toggle()
+                    onboardHandler.onboarding.third.toggle()
+                    onboardHandler.handleOnboardScreen(isNext: true)
+
                 } label: {
                     Text("Introvert")
                         .foregroundColor(.background)

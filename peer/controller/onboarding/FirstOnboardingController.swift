@@ -11,6 +11,8 @@ struct FirstOnboardingController: View {
     
     @ObservedObject var onboardHandler: OnboardHandler
     
+    @State private var isShowingPopover = false
+    
     var body: some View {
         
             ZStack {
@@ -27,11 +29,16 @@ struct FirstOnboardingController: View {
                         .padding(.leading, 10)
                     Spacer()
                     Button {
-                        print("Question")
+                        isShowingPopover.toggle()
                     } label: {
                         Image(systemName: "questionmark.app")
                             .foregroundColor(.white)
                             .font(.system(size: 40))
+                    }
+                    .popover(isPresented: $isShowingPopover, attachmentAnchor: .point(.center)) {
+                        PopoverView()
+                            .frame(width: UIScreen.screenWidth * 0.8)
+                            .presentationCompactAdaptation(.popover)
                     }
                     .padding()
                     .padding(.trailing, 10)

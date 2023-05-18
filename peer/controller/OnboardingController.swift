@@ -25,8 +25,10 @@ struct OnboardingController: View {
                         .transition(.opacity)
                 } else if onboardHandler.onboarding.second {
                         SecondOnboardingController(onboardHandler: onboardHandler)
-                        .transition(.opacity )//.move(edge: .trailing))
-                    
+                        .transition(.opacity)
+                } else if onboardHandler.onboarding.third {
+                    ThirdOnboardingController(onboardHandler: onboardHandler)
+                        .transition(.opacity)
                 }
                 
             }

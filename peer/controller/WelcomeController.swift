@@ -50,7 +50,7 @@ struct WelcomeController: View {
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {
-                        Text("Team Member")
+                        Text("Continue")
                             .foregroundColor(.white)
                             .padding()
                     }
@@ -58,18 +58,18 @@ struct WelcomeController: View {
                     .background(.black)
                     .cornerRadius(25)
                     .padding()
-                    
-                    NavigationLink {
-                        OnboardingController()
-                    } label: {
-                        Text("Team Admin")
-                            .foregroundColor(.white)
-                            .padding()
-                    }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
-                        .background(.black)
-                        .cornerRadius(25)
-                        .padding()
-                        .padding(.bottom, 40)
+                    Spacer()
+//                    NavigationLink {
+//                        OnboardingController()
+//                    } label: {
+//                        Text("Team Admin")
+//                            .foregroundColor(.white)
+//                            .padding()
+//                    }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+//                        .background(.black)
+//                        .cornerRadius(25)
+//                        .padding()
+//                        .padding(.bottom, 40)
                     
                 }
             }
