@@ -46,11 +46,11 @@ struct WelcomeController: View {
                         .padding(.bottom, 30)
                     
                     NavigationLink {
-                        OnboardingController()
+                        MainMenuController()
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {
-                        Text("Continue")
+                        Text("Begin")
                             .foregroundColor(.white)
                             .padding()
                     }
@@ -73,7 +73,7 @@ struct WelcomeController: View {
                     
                 }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

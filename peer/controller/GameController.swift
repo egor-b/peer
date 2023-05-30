@@ -76,7 +76,7 @@ struct GameController: View {
 //                        Spacer()
                         Button {
                         } label: {
-                            Text("Continue")
+                            Text("Finish")
                                 .foregroundColor(.background)
                                 .bold()
                                 .padding()

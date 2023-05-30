@@ -23,6 +23,9 @@
 		4E1DE32C2A0BDEB300CFC5E9 /* OnboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE32B2A0BDEB300CFC5E9 /* OnboardHandler.swift */; };
 		4E1DE32F2A0BDF6500CFC5E9 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */; };
 		4E1DE3312A0D38E400CFC5E9 /* ThirdOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1DE3302A0D38E300CFC5E9 /* ThirdOnboardingController.swift */; };
+		4E6A42D82A259CD100B6FA2B /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6A42D72A259CD100B6FA2B /* MainMenuController.swift */; };
+		4E6A42DA2A25A23500B6FA2B /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6A42D92A25A23500B6FA2B /* MainMenuButton.swift */; };
+		4E6A42DC2A25A78500B6FA2B /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6A42DB2A25A78500B6FA2B /* GameType.swift */; };
 		4EA50CB52A167D60005B36CE /* TeamPlayersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA50CB42A167D60005B36CE /* TeamPlayersController.swift */; };
 		4ED03BBE2A13B03B00235CFB /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED03BBD2A13B03B00235CFB /* PopoverView.swift */; };
 		4ED03BC02A13B40600235CFB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED03BBF2A13B40600235CFB /* CardView.swift */; };
@@ -70,6 +73,9 @@
 		4E1DE32B2A0BDEB300CFC5E9 /* OnboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardHandler.swift; sourceTree = "<group>"; };
 		4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		4E1DE3302A0D38E300CFC5E9 /* ThirdOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingController.swift; sourceTree = "<group>"; };
+		4E6A42D72A259CD100B6FA2B /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		4E6A42D92A25A23500B6FA2B /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
+		4E6A42DB2A25A78500B6FA2B /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		4EA50CB42A167D60005B36CE /* TeamPlayersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPlayersController.swift; sourceTree = "<group>"; };
 		4ED03BBD2A13B03B00235CFB /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		4ED03BBF2A13B40600235CFB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 				4E1DE3202A0A9B6E00CFC5E9 /* OnboardingController.swift */,
 				4ED03BC12A13B4B100235CFB /* GameController.swift */,
 				4ED03BC52A13CAED00235CFB /* GameplayController.swift */,
+				4E6A42D72A259CD100B6FA2B /* MainMenuController.swift */,
 				4EA50CB42A167D60005B36CE /* TeamPlayersController.swift */,
 			);
 			path = controller;
@@ -193,6 +200,7 @@
 				4E1DE3232A0A9C6400CFC5E9 /* ProgressBarView.swift */,
 				4ED03BBD2A13B03B00235CFB /* PopoverView.swift */,
 				4ED03BBF2A13B40600235CFB /* CardView.swift */,
+				4E6A42D92A25A23500B6FA2B /* MainMenuButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			children = (
 				4E1DE32E2A0BDF6500CFC5E9 /* Onboarding.swift */,
 				4ED03BC32A13B89000235CFB /* Card.swift */,
+				4E6A42DB2A25A78500B6FA2B /* GameType.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -356,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1DE2F22A0A7FDC00CFC5E9 /* WelcomeController.swift in Sources */,
+				4E6A42DA2A25A23500B6FA2B /* MainMenuButton.swift in Sources */,
+				4E6A42DC2A25A78500B6FA2B /* GameType.swift in Sources */,
 				4E1DE3242A0A9C6400CFC5E9 /* ProgressBarView.swift in Sources */,
 				4E1DE32F2A0BDF6500CFC5E9 /* Onboarding.swift in Sources */,
 				4E1DE2F02A0A7FDC00CFC5E9 /* peerApp.swift in Sources */,
@@ -363,6 +374,7 @@
 				4E1DE3292A0BDBC600CFC5E9 /* SecondOnboardingController.swift in Sources */,
 				4ED03BBE2A13B03B00235CFB /* PopoverView.swift in Sources */,
 				4ED03BC82A13DEC100235CFB /* GameService.swift in Sources */,
+				4E6A42D82A259CD100B6FA2B /* MainMenuController.swift in Sources */,
 				4ED03BC62A13CAED00235CFB /* GameplayController.swift in Sources */,
 				4ED03BC42A13B89000235CFB /* Card.swift in Sources */,
 				4ED03BC02A13B40600235CFB /* CardView.swift in Sources */,
