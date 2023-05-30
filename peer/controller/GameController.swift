@@ -64,6 +64,7 @@ struct GameController: View {
                                     if (self.maxID - 3)...self.maxID ~= card.id {
                                         CardView(card: card, onRemove: { removeCard in
                                             // Remove that user from our array
+                                            gameService.resetTimer()
                                             self.cards.removeAll { $0.id == removeCard.id }
                                         })
                                         .animation(.spring())

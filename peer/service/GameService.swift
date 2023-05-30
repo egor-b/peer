@@ -9,9 +9,7 @@ import Foundation
 
 
 class GameService: ObservableObject {
-    
-    private var gameTime: Float = 30.0
-    
+        
     @Published var time: Float = 30.0
     var timer: Timer!
     
@@ -35,5 +33,10 @@ class GameService: ObservableObject {
         return String(format: "%02d:%02d", minutes, seconds)
     }
 
+    func resetTimer() {
+        timer.invalidate()
+        time = 30.0
+        startTimer()
+    }
     
 }

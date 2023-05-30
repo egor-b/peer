@@ -10,14 +10,14 @@ import SwiftUI
 struct CardView: View {
     @State private var translation: CGSize = .zero
     @State private var swipeStatus: LikeDislike = .none
-    
+
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
     
     private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
     
     private enum LikeDislike: Int {
-        case like, dislike, none
+        case done, skip, none
     }
     
     init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
@@ -36,9 +36,9 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-//                 ZStack(alignment: self.swipeStatus == .like ? .topLeading : .topTrailing) {
-//                    if self.swipeStatus == .like {
-//                        Text("LIKE")
+//                 ZStack(alignment: self.swipeStatus == .done ? .topLeading : .topTrailing) {
+//                    if self.swipeStatus == .done {
+//                        Text("DONE")
 //                            .font(.headline)
 //                            .padding()
 //                            .cornerRadius(10)
@@ -48,8 +48,8 @@ struct CardView: View {
 //                                    .stroke(Color.green, lineWidth: 3.0)
 //                        ).padding(24)
 //                            .rotationEffect(Angle.degrees(-45))
-//                    } else if self.swipeStatus == .dislike {
-//                        Text("DISLIKE")
+//                    } else if self.swipeStatus == .skip {
+//                        Text("SKIPED")
 //                            .font(.headline)
 //                            .padding()
 //                            .cornerRadius(10)
@@ -86,9 +86,9 @@ struct CardView: View {
                         self.translation = value.translation
                         
                         if (self.getGesturePercentage(geometry, from: value)) >= self.thresholdPercentage {
-                            self.swipeStatus = .like
+                            self.swipeStatus = .done
                         } else if self.getGesturePercentage(geometry, from: value) <= -self.thresholdPercentage {
-                            self.swipeStatus = .dislike
+                            self.swipeStatus = .skip
                         } else {
                             self.swipeStatus = .none
                         }
