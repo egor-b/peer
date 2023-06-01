@@ -10,8 +10,6 @@ import SwiftUI
 struct OnboardingController: View {
     
     @ObservedObject var onboardHandler = OnboardHandler()
-
-//    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ZStack {

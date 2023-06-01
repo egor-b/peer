@@ -9,14 +9,16 @@ import SwiftUI
 
 struct TeamPlayersController: View {
     
+    @Environment(\.presentationMode) var presentationMode
+
+    
     @State private var t = ""
     @State private var totalPlayers = 3
     @State private var name: [String] = ["Jack"]
     
+    @Binding var isActive: Bool
+    
     var type: GameType
-    
-   
-    
     
     var body: some View {
         NavigationView {
@@ -71,19 +73,31 @@ struct TeamPlayersController: View {
                     }.padding(.horizontal)
                     
                     Spacer()
-                    NavigationLink {
-                        GameplayController()
-                            .navigationBarTitle("")
-                            .navigationBarHidden(true)
-                    } label: {
-                        Text("Continue")
-                            .foregroundColor(.background)
-                            .bold()
-                            .padding()
-                    }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
-                        .background(.white)
-                        .cornerRadius(25)
-                        .padding()
+                    
+                    HStack {
+                        Button{
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("Back")
+                                .foregroundColor(.background)
+                                .bold()
+                                .padding()
+                        }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+                            .background(.white)
+                            .cornerRadius(25)
+//                            .padding()
+                        
+                        NavigationLink(destination: GameplayController(isActive: $isActive)) {
+                            Text("Continue")
+                                .foregroundColor(.background)
+                                .bold()
+                                .padding()
+                        }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+                            .background(.white)
+                            .cornerRadius(25)
+//                            .padding()
+                    }.padding(.horizontal)
+                   
                     Spacer()
                 }
             }
@@ -93,6 +107,6 @@ struct TeamPlayersController: View {
 
 struct TeamPlayersController_Previews: PreviewProvider {
     static var previews: some View {
-        TeamPlayersController(type: .hobbies)
+        TeamPlayersController(isActive: .constant(false), type: .hobbies)
     }
 }

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MainMenuController: View {
     
-    @State private var Discussion = "Categories"
+    @State private var isActive: Bool = false
+    
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 Color.background.ignoresSafeArea()
                 VStack() {
@@ -32,41 +33,35 @@ struct MainMenuController: View {
                     Spacer(minLength: 30)
                     Grid() {
                         GridRow  {
-                            NavigationLink {
-                                TeamPlayersController(type: .petPeeves)
-                                    .navigationBarTitle("")
-                                    .navigationBarHidden(true)
-                            } label: {
-                                MainMenuButton(image: "flame", textLabel: "Pet Peeves")
-                            }
+                            
+                            NavigationLink(
+                                destination: TeamPlayersController(isActive: $isActive, type: .petPeeves).navigationBarTitle("").navigationBarHidden(true),
+                                isActive: $isActive,
+                                label: { MainMenuButton(image: "flame", textLabel: "Pet Peeves") })
                             .buttonStyle(.plain)
                             .navigationBarHidden(true)
-                            NavigationLink {
-                                TeamPlayersController(type: .ideas)
-                                    .navigationBarTitle("")
-                                    .navigationBarHidden(true)
-                            } label: {
-                                MainMenuButton(image: "bulb", textLabel: "Ideas")
-                            }.buttonStyle(.plain)
                             
+                            NavigationLink(
+                                destination: TeamPlayersController(isActive: $isActive, type: .ideas).navigationBarTitle("").navigationBarHidden(true),
+                                isActive: $isActive,
+                                label: {  MainMenuButton(image: "bulb", textLabel: "Ideas") })
+                            .buttonStyle(.plain)
+                            .navigationBarHidden(true)
                         }
                         
                         GridRow {
-                            NavigationLink {
-                                TeamPlayersController(type: .hobbies)
-                                    .navigationBarTitle("")
-                                    .navigationBarHidden(true)
-                            } label: {
-                                MainMenuButton(image: "heart", textLabel: "Hobbies")
-                            }.buttonStyle(.plain)
-                            
-                            NavigationLink {
-                                TeamPlayersController(type: .joke)
-                                    .navigationBarTitle("")
-                                    .navigationBarHidden(true)
-                            } label: {
-                                MainMenuButton(image: "smile", textLabel: "Jokes")
-                            }.buttonStyle(.plain)
+                            NavigationLink(
+                                destination: TeamPlayersController(isActive: $isActive, type: .hobbies).navigationBarTitle("").navigationBarHidden(true),
+                                isActive: $isActive,
+                                label: {  MainMenuButton(image: "heart", textLabel: "Hobbies") })
+                            .buttonStyle(.plain)
+                            .navigationBarHidden(true)
+                            NavigationLink(
+                                destination: TeamPlayersController(isActive: $isActive, type: .joke).navigationBarTitle("").navigationBarHidden(true),
+                                isActive: $isActive,
+                                label: {  MainMenuButton(image: "smile", textLabel: "Jokes") })
+                            .buttonStyle(.plain)
+                            .navigationBarHidden(true)
                             
                             
                         }

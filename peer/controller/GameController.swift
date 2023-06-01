@@ -10,7 +10,9 @@ import SwiftUI
 struct GameController: View {
     
     @ObservedObject var gameService = GameService()
-//    @State var progressValue: Float = 0.0
+    @State private var showingAlert = false
+        
+    @Binding var isActive: Bool
     
     @State var cards: [Card] = [
         Card(id: 0, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
@@ -63,9 +65,11 @@ struct GameController: View {
                                     // Range Operator
                                     if (self.maxID - 3)...self.maxID ~= card.id {
                                         CardView(card: card, onRemove: { removeCard in
-                                            // Remove that user from our array
                                             gameService.resetTimer()
                                             self.cards.removeAll { $0.id == removeCard.id }
+                                            if cards.count == 0 {
+                                                showingAlert = true
+                                            }
                                         })
                                         .animation(.spring())
                                         .frame(width: self.getCardWidth(geometry, id: card.id), height: UIScreen.screenHeight * 0.5)
@@ -76,12 +80,15 @@ struct GameController: View {
                         }
 //                        Spacer()
                         Button {
+                            gameService.removeTimer()
+                            isActive = false
                         } label: {
                             Text("Finish")
                                 .foregroundColor(.background)
+                                .frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
                                 .bold()
                                 .padding()
-                        }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+                        }
                             .background(.white)
                             .cornerRadius(25)
                             .padding()
@@ -90,6 +97,11 @@ struct GameController: View {
                 }.onAppear { gameService.startTimer() }
                 
             }.padding()
+        }
+        .alert("Cards are over", isPresented: $showingAlert, actions: {
+            Button("OK", role: .cancel) { showingAlert = false; isActive = false }
+        }) {
+            Text("Start new game")
         }
     }
 }
@@ -121,6 +133,6 @@ struct ProgressBar: View {
 
 struct GameController_Previews: PreviewProvider {
     static var previews: some View {
-        GameController()
+        GameController(isActive: .constant(false))
     }
 }

@@ -39,4 +39,7 @@ class GameService: ObservableObject {
         startTimer()
     }
     
+    func removeTimer() {
+        timer.invalidate()
+    }
 }

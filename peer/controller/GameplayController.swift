@@ -10,7 +10,8 @@ import SwiftUI
 struct GameplayController: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
+    @Binding var isActive: Bool
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -60,8 +61,9 @@ struct GameplayController: View {
                                 .font(.system(size: 30))
                         }.padding()
                         Spacer(minLength: UIScreen.screenWidth * 0.5)
+                        
                         NavigationLink {
-                            GameController()
+                            GameController(isActive: $isActive)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -79,6 +81,6 @@ struct GameplayController: View {
 
 struct GameplayController_Previews: PreviewProvider {
     static var previews: some View {
-        GameplayController()
+        GameplayController(isActive: .constant(false))
     }
 }
