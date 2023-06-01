@@ -87,7 +87,7 @@ struct TeamPlayersController: View {
                             .cornerRadius(25)
 //                            .padding()
                         
-                        NavigationLink(destination: GameplayController(isActive: $isActive)) {
+                        NavigationLink(destination: GameplayController(isActive: $isActive, type: type)) {
                             Text("Continue")
                                 .foregroundColor(.background)
                                 .bold()

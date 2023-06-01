@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CardView: View {
     @State private var translation: CGSize = .zero
-    @State private var swipeStatus: LikeDislike = .none
+    @State private var swipeStatus: DoneSkip = .none
 
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
     
     private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
     
-    private enum LikeDislike: Int {
+    private enum DoneSkip: Int {
         case done, skip, none
     }
     

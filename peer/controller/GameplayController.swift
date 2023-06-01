@@ -11,7 +11,8 @@ struct GameplayController: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var isActive: Bool
-
+    var type: GameType
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -63,7 +64,7 @@ struct GameplayController: View {
                         Spacer(minLength: UIScreen.screenWidth * 0.5)
                         
                         NavigationLink {
-                            GameController(isActive: $isActive)
+                            GameController(isActive: $isActive, type: type)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -81,6 +82,6 @@ struct GameplayController: View {
 
 struct GameplayController_Previews: PreviewProvider {
     static var previews: some View {
-        GameplayController(isActive: .constant(false))
+        GameplayController(isActive: .constant(false), type: .hobbies)
     }
 }
