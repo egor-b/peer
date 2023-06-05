@@ -18,8 +18,8 @@ struct MainMenuController: View {
                 VStack() {
                     Spacer()
                     Text("Discussions")
+                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                        .bold()
                         .font(.title)
                         .frame(width: UIScreen.screenWidth)
                     

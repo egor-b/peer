@@ -95,6 +95,10 @@ class GameService: ObservableObject {
 
         return cards
     }
+    
+    func getRandomeName(_ players: [String]) -> String {
+        return players.randomElement() ?? "name"
+    }
 }
 
     

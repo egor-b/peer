@@ -12,6 +12,7 @@ struct GameplayController: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var isActive: Bool
     var type: GameType
+    var players: [String]
     
     var body: some View {
         NavigationView {
@@ -64,7 +65,7 @@ struct GameplayController: View {
                         Spacer(minLength: UIScreen.screenWidth * 0.5)
                         
                         NavigationLink {
-                            GameController(isActive: $isActive, type: type)
+                            GameController(isActive: $isActive, type: type, players: players)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -76,12 +77,15 @@ struct GameplayController: View {
                     }
                 }
             }
+            .onAppear {
+                print(players)
+            }
         }.navigationBarHidden(true)
     }
 }
 
 struct GameplayController_Previews: PreviewProvider {
     static var previews: some View {
-        GameplayController(isActive: .constant(false), type: .hobbies)
+        GameplayController(isActive: .constant(false), type: .hobbies, players: ["Eric", "Carl"])
     }
 }

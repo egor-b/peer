@@ -40,11 +40,6 @@ struct WelcomeController: View {
                         .multilineTextAlignment(.leading)
                         .padding()
                     Spacer()
-                    Text("Please chose your role to begin.")
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 30)
-                    
                     NavigationLink {
                         MainMenuController()
                             .navigationBarTitle("")

@@ -11,9 +11,10 @@ struct GameController: View {
     
     @ObservedObject var gameService = GameService()
     @State private var showingAlert = false
-        
+    @State private var name = ""
     @Binding var isActive: Bool
     var type: GameType
+    var players: [String]
     
     @State var cards = [Card]()
     
@@ -55,7 +56,12 @@ struct GameController: View {
                             
                             Spacer()
                         }
-                        Spacer()
+                        Text(name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .padding(.top, 20)
+                            .padding(.bottom, 50)
                         ZStack {
                             ForEach(self.cards, id: \.self) { card in
                                 Group {
@@ -84,7 +90,7 @@ struct GameController: View {
                             Text("Finish")
                                 .foregroundColor(.background)
                                 .frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
-                                .bold()
+//                                .bold()
                                 .padding()
                         }
                             .background(.white)
@@ -95,6 +101,7 @@ struct GameController: View {
                 }.onAppear {
                     gameService.startTimer()
                     cards = gameService.getQuestions(for: type)
+                    name = gameService.getRandomeName(players)
                 }
                 
             }.padding()
@@ -134,6 +141,6 @@ struct ProgressBar: View {
 
 struct GameController_Previews: PreviewProvider {
     static var previews: some View {
-        GameController(isActive: .constant(false), type: .hobbies)
+        GameController(isActive: .constant(false), type: .hobbies, players: ["Eric","John"])
     }
 }

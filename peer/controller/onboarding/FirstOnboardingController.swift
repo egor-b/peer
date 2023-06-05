@@ -38,7 +38,7 @@ struct FirstOnboardingController: View {
                     .popover(isPresented: $isShowingPopover, attachmentAnchor: .point(.center)) {
                         PopoverView()
                             .frame(width: UIScreen.screenWidth * 0.8)
-                            .presentationCompactAdaptation(.popover)
+//                            .presentationCompactAdaptation(.popover)
                     }
                     .padding()
                     .padding(.trailing, 10)

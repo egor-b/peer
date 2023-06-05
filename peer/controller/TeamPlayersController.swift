@@ -10,9 +10,8 @@ import SwiftUI
 struct TeamPlayersController: View {
     
     @Environment(\.presentationMode) var presentationMode
-
     
-    @State private var t = ""
+    @State private var team: [String] = ["","",""]
     @State private var totalPlayers = 3
     @State private var name: [String] = ["Jack"]
     
@@ -63,13 +62,19 @@ struct TeamPlayersController: View {
                     }
                     Spacer()
                     ForEach(1...totalPlayers, id: \.self) { index in
-                        TextField("\(index) Player name", text: $t)
-                            .tag(index)
-                            .padding(.horizontal)
-                            .padding(.vertical, 3)
-                            .background()
-                            .cornerRadius(5)
-                            .frame(width: UIScreen.screenWidth * 0.7)
+                        TextField("\(index) Player name", text: Binding(
+                            get: {
+                                return self.team[index - 1]
+                            },
+                            set: { newValue in
+                                return self.team[index - 1] = newValue
+                            }))
+                        .tag(index)
+                        .padding(.horizontal)
+                        .padding(.vertical, 3)
+                        .background()
+                        .cornerRadius(5)
+                        .frame(width: UIScreen.screenWidth * 0.7)
                     }.padding(.horizontal)
                     
                     Spacer()
@@ -85,19 +90,17 @@ struct TeamPlayersController: View {
                         }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
                             .background(.white)
                             .cornerRadius(25)
-//                            .padding()
                         
-                        NavigationLink(destination: GameplayController(isActive: $isActive, type: type)) {
+                        NavigationLink(destination: GameplayController(isActive: $isActive, type: type, players: team)) {
                             Text("Continue")
                                 .foregroundColor(.background)
                                 .bold()
                                 .padding()
                         }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
-                            .background(.white)
-                            .cornerRadius(25)
-//                            .padding()
+                        .background(.white)
+                        .cornerRadius(25)
                     }.padding(.horizontal)
-                   
+                    
                     Spacer()
                 }
             }
