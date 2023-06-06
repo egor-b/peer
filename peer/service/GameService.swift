@@ -11,6 +11,8 @@ import Foundation
 class GameService: ObservableObject {
         
     @Published var time: Float = 30.0
+    @Published var team = ["","",""]
+    
     var timer: Timer!
 
 
@@ -89,15 +91,35 @@ class GameService: ObservableObject {
             cards.append(Card(id: 7, text: "Open office spaces or shared work areas"))
             cards.append(Card(id: 8, text: "Virtual collaboration tools"))
             cards.append(Card(id: 9, text: "Employee feedback sessions"))
-        default:
-            cards = [Card]()
         }
 
         return cards
     }
     
-    func getRandomeName(_ players: [String]) -> String {
-        return players.randomElement() ?? "name"
+    func getRandomeName() -> String {
+        return team.randomElement() ?? "name"
+    }
+    
+    func appendElement(_ element: String) {
+        team.append(element)
+    }
+    
+    func changeElemnt(at index: Int, element: String) {
+        team[index] = element
+    }
+    
+    func changeAmountElements(new amount: Int) {
+        if team.count < amount {
+            while amount >= team.count - 1 {
+                appendElement("")
+            }
+        } else {
+            var i = team.count - 1
+            while amount < team.count {
+                team.remove(at: i)
+                i -= 1
+            }
+        }
     }
 }
 

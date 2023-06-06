@@ -11,9 +11,9 @@ struct TeamPlayersController: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject private var gameService = GameService()
     @State private var team: [String] = ["","",""]
     @State private var totalPlayers = 3
-    @State private var name: [String] = ["Jack"]
     
     @Binding var isActive: Bool
     
@@ -41,9 +41,10 @@ struct TeamPlayersController: View {
                         Menu {
                             ForEach(3...10, id: \.self) { index in
                                 Button {
-                                    withAnimation {
+                                    gameService.changeAmountElements(new: index)
+//                                    withAnimation {
                                         totalPlayers = index
-                                    }
+//                                    }
                                 } label: {
                                     Text("\(index) players")
                                     Image(systemName: "person.fill")
@@ -64,10 +65,10 @@ struct TeamPlayersController: View {
                     ForEach(1...totalPlayers, id: \.self) { index in
                         TextField("\(index) Player name", text: Binding(
                             get: {
-                                return self.team[index - 1]
+                                return gameService.team[index - 1]
                             },
                             set: { newValue in
-                                return self.team[index - 1] = newValue
+                                return gameService.changeElemnt(at: index - 1, element: newValue)
                             }))
                         .tag(index)
                         .padding(.horizontal)
@@ -91,7 +92,7 @@ struct TeamPlayersController: View {
                             .background(.white)
                             .cornerRadius(25)
                         
-                        NavigationLink(destination: GameplayController(isActive: $isActive, type: type, players: team)) {
+                        NavigationLink(destination: GameplayController(isActive: $isActive, type: type, gameSevice: gameService)) {
                             Text("Continue")
                                 .foregroundColor(.background)
                                 .bold()

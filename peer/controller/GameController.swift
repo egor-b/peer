@@ -9,13 +9,12 @@ import SwiftUI
 
 struct GameController: View {
     
-    @ObservedObject var gameService = GameService()
+    @ObservedObject var gameService: GameService
     @State private var showingAlert = false
     @State private var name = ""
     @Binding var isActive: Bool
     var type: GameType
-    var players: [String]
-    
+//    var gs: GameService
     @State var cards = [Card]()
     
     /// Return the CardViews width for the given offset in the array
@@ -73,6 +72,7 @@ struct GameController: View {
                                             if cards.count == 0 {
                                                 showingAlert = true
                                             }
+                                            name = gameService.getRandomeName()
                                         })
                                         .frame(width: self.getCardWidth(geometry, id: card.id))
                                         .animation(.spring())
@@ -101,7 +101,7 @@ struct GameController: View {
                 }.onAppear {
                     gameService.startTimer()
                     cards = gameService.getQuestions(for: type)
-                    name = gameService.getRandomeName(players)
+                    name = gameService.getRandomeName()
                 }
                 
             }.padding()
@@ -141,6 +141,6 @@ struct ProgressBar: View {
 
 struct GameController_Previews: PreviewProvider {
     static var previews: some View {
-        GameController(isActive: .constant(false), type: .hobbies, players: ["Eric","John"])
+        GameController(gameService: GameService(), isActive: .constant(false), type: .hobbies)
     }
 }
