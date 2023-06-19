@@ -12,9 +12,8 @@ struct GameController: View {
     @ObservedObject var gameService: GameService
     @State private var showingAlert = false
     @State private var name = ""
-    @Binding var isActive: Bool
+    @Binding var path: NavigationPath
     var type: GameType
-//    var gs: GameService
     @State var cards = [Card]()
     
     /// Return the CardViews width for the given offset in the array
@@ -83,10 +82,7 @@ struct GameController: View {
                             }
                         }
                         Spacer()
-                        Button {
-                            gameService.removeTimer()
-                            isActive = false
-                        } label: {
+                        NavigationLink(destination: MainMenuController(path: $path)) {
                             Text("Finish")
                                 .foregroundColor(.background)
                                 .frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
@@ -104,12 +100,16 @@ struct GameController: View {
                     name = gameService.getRandomeName()
                 }
                 
-            }.padding()
+            }
+            .padding()
         }
         .alert("Cards are over", isPresented: $showingAlert, actions: {
-            Button("OK", role: .cancel) { showingAlert = false; isActive = false }
+            Button("OK", role: .cancel) { showingAlert = false; gameService.removeTimer() }
         }) {
             Text("Start new game")
+        }
+        .onDisappear {
+            gameService.removeTimer()
         }
     }
 }
@@ -141,6 +141,6 @@ struct ProgressBar: View {
 
 struct GameController_Previews: PreviewProvider {
     static var previews: some View {
-        GameController(gameService: GameService(), isActive: .constant(false), type: .hobbies)
+        GameController(gameService: GameService(), path: .constant(NavigationPath()), type: .hobbies)
     }
 }

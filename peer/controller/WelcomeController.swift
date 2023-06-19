@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct WelcomeController: View {
+    @State private var path: NavigationPath = .init()
+
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             ZStack {
                 Color.background.ignoresSafeArea()
                 VStack {
@@ -41,32 +43,27 @@ struct WelcomeController: View {
                         .padding()
                     Spacer()
                     NavigationLink {
-                        MainMenuController()
-                            .navigationBarTitle("")
-                            .navigationBarHidden(true)
+                        MainMenuController(path: $path)
                     } label: {
                         Text("Begin")
                             .foregroundColor(.white)
                             .padding()
                     }
+
+//                    NavigationLink(value: GameType.welcome, label: {
+//                        Text("Begin")
+//                            .foregroundColor(.white)
+//                            .padding()
+//                    })
                     .frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
                     .background(.black)
                     .cornerRadius(25)
                     .padding()
                     Spacer()
-//                    NavigationLink {
-//                        OnboardingController()
-//                    } label: {
-//                        Text("Team Admin")
-//                            .foregroundColor(.white)
-//                            .padding()
-//                    }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
-//                        .background(.black)
-//                        .cornerRadius(25)
-//                        .padding()
-//                        .padding(.bottom, 40)
-                    
                 }
+//                .navigationDestination(for: GameType.self) { _ in
+//                    MainMenuController(path: $path)
+//                }
             }
         }.navigationBarHidden(true)
     }

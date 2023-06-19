@@ -91,6 +91,8 @@ class GameService: ObservableObject {
             cards.append(Card(id: 7, text: "Open office spaces or shared work areas"))
             cards.append(Card(id: 8, text: "Virtual collaboration tools"))
             cards.append(Card(id: 9, text: "Employee feedback sessions"))
+        case .welcome:
+            cards = []
         }
 
         return cards

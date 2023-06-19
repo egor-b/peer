@@ -12,4 +12,5 @@ enum GameType {
     case ideas
     case hobbies
     case petPeeves
+    case welcome
 }

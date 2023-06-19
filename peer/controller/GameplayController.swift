@@ -9,13 +9,13 @@ import SwiftUI
 
 struct GameplayController: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    @Binding var isActive: Bool
+    @Environment(\.dismiss) var dismiss
+    @Binding var path: NavigationPath
     var type: GameType
     var gameSevice: GameService
     
     var body: some View {
-        NavigationView {
+//        NavigationStack(path: $path) {
             ZStack {
                 Color.background.ignoresSafeArea()
                 VStack {
@@ -54,35 +54,43 @@ struct GameplayController: View {
                         .padding()
                     Spacer()
                     HStack {
-                        Spacer()
-                        Button {
-                            self.presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "arrow.left.circle")
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 30))
-                        }.padding()
-                        Spacer(minLength: UIScreen.screenWidth * 0.5)
+//                        Spacer()
+//                        Button {
+////                            path.removeLast()
+//                            dismiss()
+//                        } label: {
+//                            Image(systemName: "arrow.left.circle")
+//                                .foregroundColor(Color.white)
+//                                .font(.system(size: 30))
+//                        }.padding()
+//                        Spacer(minLength: UIScreen.screenWidth * 0.5)
                         
                         NavigationLink {
-                            GameController(gameService: gameSevice, isActive: $isActive, type: type)
+                            GameController(gameService: gameSevice, path: $path, type: type)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
-                            Image(systemName: "arrow.right.circle")
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 30))
-                        }.padding()
-                        Spacer()
+                            Text("Continue")
+                                .foregroundColor(.background)
+                                .bold()
+                                .padding()
+//                            Image(systemName: "arrow.right.circle")
+//                                .foregroundColor(Color.white)
+//                                .font(.system(size: 30))
+                        }.frame(minWidth: 0, maxWidth: UIScreen.screenWidth * 0.75)
+                            .background(.white)
+                            .cornerRadius(25)
+                        .padding()
+//                        Spacer()
                     }
                 }
             }
-        }.navigationBarHidden(true)
+//        }.navigationBarHidden(true)
     }
 }
 
 struct GameplayController_Previews: PreviewProvider {
     static var previews: some View {
-        GameplayController(isActive: .constant(false), type: .hobbies, gameSevice: GameService())
+        GameplayController(path: .constant(NavigationPath()), type: .hobbies, gameSevice: GameService())
     }
 }
