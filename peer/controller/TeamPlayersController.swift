@@ -9,8 +9,7 @@ import SwiftUI
 
 struct TeamPlayersController: View {
     
-//    @Environment(\.dismiss) var dismiss
-//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var gameService = GameService()
     @State private var totalPlayers = 3
     @Binding var path: NavigationPath
@@ -59,17 +58,17 @@ struct TeamPlayersController: View {
                 }
                 Spacer()
                 ForEach(1...totalPlayers, id: \.self) { index in
-                    TextField("\(index) Player name", text: Binding(
+                    TextField("", text: Binding(
                         get: {
                             return gameService.team[index - 1]
                         },
                         set: { newValue in
                             return gameService.changeElemnt(at: index - 1, element: newValue)
-                        }))
+                        }), prompt: Text("\(index) Player name").foregroundColor(.gray))
                     .tag(index)
                     .padding(.horizontal)
                     .padding(.vertical, 3)
-                    .background()
+                    .background(colorScheme == .dark ? .white : Color.white)
                     .cornerRadius(5)
                     .frame(width: UIScreen.screenWidth * 0.7)
                 }.padding(.horizontal)

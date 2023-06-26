@@ -43,7 +43,7 @@ struct MainMenuController: View {
                         NavigationLink(destination: {
                             TeamPlayersController(path: $path, type: .ideas)
                         }, label: {
-                            MainMenuButton(image: "heart", textLabel: "Ideas")
+                            MainMenuButton(image: "bulb", textLabel: "Ideas")
                         })
                         .buttonStyle(.plain)
                         .navigationBarHidden(true)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     @State private var translation: CGSize = .zero
     @State private var swipeStatus: DoneSkip = .none
 
@@ -66,6 +68,7 @@ struct CardView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(self.card.text)
                             .font(.subheadline)
+                            .foregroundColor(colorScheme == .dark ? .black : Color.black)
                             .bold()
                             .padding(.vertical, 5)
                     }

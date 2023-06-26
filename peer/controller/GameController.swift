@@ -76,7 +76,6 @@ struct GameController: View {
                                         .frame(width: self.getCardWidth(geometry, id: card.id))
                                         .animation(.spring())
                                         .offset(x: 0, y: self.getCardOffset(geometry, id: card.id))
-//                                        .background(.black)
                                     }
                                 }.frame(height: UIScreen.screenHeight * 0.19)
                             }
